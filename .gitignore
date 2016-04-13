@@ -1,0 +1,15 @@
+# Android
+GiottoMLAndroid/.gradle/
+GiottoMLAndroid/.idea/
+GiottoMLAndroid/DSLSample.iml
+GiottoMLAndroid/GiottoMLAndroid.iml
+GiottoMLAndroid/gradle.properties
+GiottoMLAndroid/gradlew
+GiottoMLAndroid/gradlew.bat
+GiottoMLAndroid/local.properties
+GiottoMLAndroid/settings.gradle
+
+# Exclude build from Sphinx
+doc/_build
+doc/_static
+doc/_templates

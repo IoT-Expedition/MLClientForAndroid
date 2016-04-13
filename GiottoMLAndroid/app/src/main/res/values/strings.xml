@@ -1,0 +1,38 @@
+<resources>
+    <string name="app_name">GIoTTO</string>
+
+    <string name="sensors">Sensors</string>
+    <string name="settings">Settings</string>
+    <string name="buildingdepot_setting">Building Depot Settings</string>
+    <string name="ml_setting">ML Layer Settings</string>
+    <string name="location_emulation">Location Emulation</string>
+
+
+    <string name="about">About</string>
+    <string name="action_settings">Settings</string>
+    <string name="action_delete">Delete</string>
+    <string name="action_edit">Edit</string>
+    <string name="action_evaluate">Evaluate</string>
+    <string name="action_train">Train</string>
+    <string name="action_monitor">Monitor</string>
+    <string name="action_test">Test</string>
+    <string name="action_clear_all">Clear All</string>
+
+    <string name="message_add_status">Please add status by clicking the plus button.</string>
+
+    <string name="no_information">No Information</string>
+    <string name="current_status">Current Status</string>
+
+    <string name="machine_learning_setting">Machine Learning Layer Settings</string>
+    <string name="server">Server Address</string>
+    <string name="port">Port</string>
+
+    <string name="building_depot_setting">Building Depot Settings</string>
+    <string name="api_prefix">API URL Prefix</string>
+    <string name="oauth_id">OAuth Application ID</string>
+    <string name="oauth_secret">OAuth Application Secret</string>
+
+    <string name="location_name">Location Name</string>
+
+    <string name="title_activity_edit_sensor">Edit</string>
+</resources>

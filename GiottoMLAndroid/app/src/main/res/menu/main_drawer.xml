@@ -1,0 +1,24 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/drawer_item_1"
+            android:checked="true"
+            android:icon="@android:drawable/ic_menu_add"
+            android:title="@string/sensors"/>
+        <item
+            android:id="@+id/drawer_item_2"
+            android:checked="true"
+            android:icon="@android:drawable/ic_menu_add"
+            android:title="@string/ml_setting"/>
+        <item
+            android:id="@+id/drawer_item_3"
+            android:checked="true"
+            android:icon="@android:drawable/ic_menu_add"
+            android:title="@string/buildingdepot_setting"/>
+        <item
+            android:id="@+id/drawer_item_4"
+            android:checked="true"
+            android:icon="@android:drawable/ic_menu_add"
+            android:title="@string/location_emulation"/>
+    </group>
+</menu>

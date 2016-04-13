@@ -1,0 +1,50 @@
+<resources>
+
+    <style name="Theme.Giotto" parent="Base.Theme.Giotto">
+    </style>
+
+    <style name="Base.Theme.Giotto" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">#673AB7</item>
+        <item name="colorPrimaryDark">#512DA8</item>
+        <item name="colorAccent">#FF4081</item>
+        <item name="android:windowBackground">@color/window_background</item>
+        <item name="android:windowDrawsSystemBarBackgrounds">true</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+    </style>
+
+    <style name="Widget.CardContent" parent="android:Widget">
+        <item name="android:paddingLeft">16dp</item>
+        <item name="android:paddingRight">16dp</item>
+        <item name="android:paddingTop">24dp</item>
+        <item name="android:paddingBottom">24dp</item>
+        <item name="android:orientation">vertical</item>
+    </style>
+
+    <style name="ActionBarButtons" parent="Widget.AppCompat.ActionBar">
+        <item name="contentInsetStart">0dp</item>
+        <item name="contentInsetEnd">0dp</item>
+    </style>
+
+    <style name="CollapsedAppBar" parent="@android:style/TextAppearance.Medium">
+        <item name="android:textSize">24sp</item>
+        <item name="android:textColor">#FFFFFF</item>
+        <item name="android:textStyle">normal</item>
+    </style>
+
+    <style name="CollapsedAppBarPlus1" parent="@android:style/TextAppearance.Medium">
+        <item name="android:textSize">24.5sp</item>
+        <item name="android:textColor">#FFFFFF</item>
+        <item name="android:textStyle">normal</item>
+    </style>
+
+    <style name="cardContent">
+        <item name="android:layout_margin">8dp</item>
+    </style>
+
+    <style name="cardTitle">
+        <item name="android:textSize">12sp</item>
+        <item name="android:textColor">#888888</item>
+        <item name="android:textStyle">normal</item>
+    </style>
+
+</resources>
