@@ -1,0 +1,122 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Connect a SensorTag &mdash; MLClient for Android 1.0 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/haiku.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="MLClient for Android 1.0 documentation" href="../index.html" /> 
+  </head>
+  <body role="document">
+      <div class="header" role="banner"><h1 class="heading"><a href="../index.html">
+          <span>MLClient for Android 1.0 documentation</span></a></h1>
+        <h2 class="heading"><span>Connect a SensorTag</span></h2>
+      </div>
+      <div class="topnav" role="navigation" aria-label="top navigation">
+      
+        <p>
+        <a class="uplink" href="../index.html">Contents</a>
+        </p>
+
+      </div>
+      <div class="content">
+        
+        
+  <div class="section" id="connect-a-sensortag">
+<h1>Connect a SensorTag<a class="headerlink" href="#connect-a-sensortag" title="Permalink to this headline">¶</a></h1>
+<p>This page describes how to setup a SensorTag to be used with ML Client for Android.
+In this example, we use Raspberry PI as a gateway.
+Raspberry PI connects a SensorTag via BLE, collects data,
+and sends the data to BuildingDepot.
+Once you setup Raspberry PI to send data from a SensorTag to BuildingDepot,
+you can try the demo that we did using dummy scripts with a real sensor.</p>
+<div class="section" id="setup-a-raspberry-pi">
+<h2>Setup a Raspberry PI<a class="headerlink" href="#setup-a-raspberry-pi" title="Permalink to this headline">¶</a></h2>
+<p>Connect a Raspberry PI to a network as you like, and setup a BLE dongle.
+Currently (04/10/2016), gatttool that we install in the next step does not work on Jessie.
+Thus, we recommend you to use Wheezy for your Raspberry PI.</p>
+</div>
+<div class="section" id="install-gatttool">
+<h2>Install gatttool<a class="headerlink" href="#install-gatttool" title="Permalink to this headline">¶</a></h2>
+<p>Our demo script <code class="docutils literal"><span class="pre">sensor_tag_connector.py</span></code> uses gatttool to communicate with a SensorTag.
+So, install it by following the steps below.</p>
+<p>Download the latest Bluez source:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ wget http://www.kernel.org/pub/linux/bluetooth/bluez-5.39.tar.xz
+$ tar xvf bluez-5.18.tar.xz
+$ sudo apt-get install libglib2.0-dev libdbus-1-dev libusb-dev libudev-dev libical-dev systemd libreadline-dev
+$ .configure --enable-library
+$ make -j8 <span class="o">&amp;&amp;</span> sudo make install
+</pre></div>
+</div>
+<p>The install script does not copy gatttool to your /usr/local/bin/ directory. You must do it manually</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ sudo cp attrib/gatttool /usr/local/bin/
+</pre></div>
+</div>
+</div>
+<div class="section" id="get-a-sensortag-s-mac-address">
+<h2>Get a SensorTag&#8217;s MAC Address<a class="headerlink" href="#get-a-sensortag-s-mac-address" title="Permalink to this headline">¶</a></h2>
+<p>To communicate with a SensorTag, you need its MAC Address.</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ sudo hciconfig hci0 up
+$ sudo hcitool lescan
+</pre></div>
+</div>
+<p>You will find something similar to:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>LE Scan ...
+90:59:AF:0A:A8:4E <span class="o">(</span>unknown<span class="o">)</span>
+90:59:AF:0A:A8:4E SensorTag
+</pre></div>
+</div>
+<p>The string next to SensorTag is its MAC address.
+Set the address in <code class="docutils literal"><span class="pre">demo_scripts/sensor_tag/connector_setting.json</span></code></p>
+</div>
+<div class="section" id="install-pexpect">
+<h2>Install pexpect<a class="headerlink" href="#install-pexpect" title="Permalink to this headline">¶</a></h2>
+<p>You also need pexpect to run our script.
+Install it with:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ sudo pip install pexpect
+</pre></div>
+</div>
+</div>
+<div class="section" id="get-data-from-a-sensortag">
+<h2>Get data from a SensorTag<a class="headerlink" href="#get-data-from-a-sensortag" title="Permalink to this headline">¶</a></h2>
+<p>Now run <code class="docutils literal"><span class="pre">demo_scripts/sensor_tag/sensor_tag_connect.py</span></code> to send data from a SensorTag to BuildingDepot.</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ python sensor_tag_connect.py
+</pre></div>
+</div>
+</div>
+</div>
+
+
+      </div>
+      <div class="bottomnav" role="navigation" aria-label="bottom navigation">
+      
+        <p>
+        <a class="uplink" href="../index.html">Contents</a>
+        </p>
+
+      </div>
+
+    <div class="footer" role="contentinfo">
+        &copy; Copyright 2016, Eiji Hayashi.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.5.
+    </div>
+  </body>
+</html>

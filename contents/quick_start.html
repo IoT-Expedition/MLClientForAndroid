@@ -1,0 +1,146 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Quick Start &mdash; MLClient for Android 1.0 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/haiku.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="MLClient for Android 1.0 documentation" href="../index.html" />
+    <link rel="next" title="Setup" href="setup.html" />
+    <link rel="prev" title="MLClient for Android Documentation" href="../index.html" /> 
+  </head>
+  <body role="document">
+      <div class="header" role="banner"><h1 class="heading"><a href="../index.html">
+          <span>MLClient for Android 1.0 documentation</span></a></h1>
+        <h2 class="heading"><span>Quick Start</span></h2>
+      </div>
+      <div class="topnav" role="navigation" aria-label="top navigation">
+      
+        <p>
+        «&#160;&#160;<a href="../index.html">MLClient for Android Documentation</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="setup.html">Setup</a>&#160;&#160;»
+        </p>
+
+      </div>
+      <div class="content">
+        
+        
+  <div class="section" id="quick-start">
+<h1>Quick Start<a class="headerlink" href="#quick-start" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="try-it-with-dummy-sensor-scripts">
+<h2>Try it with Dummy Sensor Scripts<a class="headerlink" href="#try-it-with-dummy-sensor-scripts" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="setup-demo-scripts">
+<h3>Setup Demo Scripts<a class="headerlink" href="#setup-demo-scripts" title="Permalink to this headline">¶</a></h3>
+<ol class="arabic simple">
+<li>Setup Building Depot with its demo database and the machine learning layer module.</li>
+<li>Copy demo_script folder to the server you installed them.</li>
+<li>Update parameters in giotto_setting.json to match your server settings.</li>
+</ol>
+</div>
+<div class="section" id="setup-android-app">
+<h3>Setup Android App<a class="headerlink" href="#setup-android-app" title="Permalink to this headline">¶</a></h3>
+<ol class="arabic simple">
+<li>Build and install the ML Client for Android on an Android phone.</li>
+<li>Click the hamburger icon at the top left corner.</li>
+<li>Change the address parameter in ML Settings and BuildingDepot Settings to match your server settings. You can leave other settings as default.</li>
+</ol>
+</div>
+<div class="section" id="try-android-app">
+<h3>Try Android App<a class="headerlink" href="#try-android-app" title="Permalink to this headline">¶</a></h3>
+<p>Now, let&#8217;s try the machine learning part.
+In this process, we will create a <em>virtual sensor</em>
+that tells whether a sensor is being shaken or not.</p>
+<p>In the demo_script folder, we have two scripts:
+<code class="docutils literal"><span class="pre">dummy_still.py</span></code> and <code class="docutils literal"><span class="pre">dummy_shaken.py</span></code>.
+These scripts emulate 15 sensor outputs from a SensorTag.
+<code class="docutils literal"><span class="pre">dummy_still.py</span></code> emulates the outputs when a SensorTag is placed still,
+and <code class="docutils literal"><span class="pre">dummy_shaken.py</span></code> emulates the outputs when a SensorTag is being shaken.</p>
+<p>First, create a virtual sensor by tapping the + button in the main screen. Type a sensor name and tap <em>Save</em>.</p>
+<a class="reference internal image-reference" href="../_images/main.png"><img alt="../_images/main.png" src="../_images/main.png" style="height: 400px;" /></a>
+<a class="reference internal image-reference" href="../_images/being_shaken.png"><img alt="../_images/being_shaken.png" src="../_images/being_shaken.png" style="height: 400px;" /></a>
+<p>Open the virtual sensor by tapping in in the main screen, then, tap the teacher icon
+to move to the training screen.</p>
+<a class="reference internal image-reference" href="../_images/list_being_shaken.png"><img alt="../_images/list_being_shaken.png" src="../_images/list_being_shaken.png" style="height: 400px;" /></a>
+<a class="reference internal image-reference" href="../_images/train.png"><img alt="../_images/train.png" src="../_images/train.png" style="height: 400px;" /></a>
+<p>Add statuses, which are potential output from a virtual sensor.
+(Essentially, they are <em>labels</em>.)
+Tap the + button, type <em>Shaken</em>, and tap <em>OK</em>.
+Again, tap the + button, type <em>Still</em>, and tap <em>OK</em>.</p>
+<a class="reference internal image-reference" href="../_images/status_still.png"><img alt="../_images/status_still.png" src="../_images/status_still.png" style="height: 400px;" /></a>
+<p>Execute <code class="docutils literal"><span class="pre">dummy_shaken.py</span></code> to emulate a situation where a SensorTag is being shaken.</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ python dummy_shaken.py
+</pre></div>
+</div>
+<p>Tap the recode icon next to Shaken to start adding a sample.
+Wait for a few seconds and tap <em>Finish</em>.
+Repeat this for 5 times.</p>
+<a class="reference internal image-reference" href="../_images/learning_shaken.png"><img alt="../_images/learning_shaken.png" src="../_images/learning_shaken.png" style="height: 400px;" /></a>
+<p>Then, stop the <code class="docutils literal"><span class="pre">dummy_shaken.py</span></code> with <code class="docutils literal"><span class="pre">Ctrl+C</span></code>.
+Execute <code class="docutils literal"><span class="pre">dummy_still.py</span></code> to emulate a situation where a SensorTag is placed still.</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ python dummy_still.py
+</pre></div>
+</div>
+<p>Tap the recode icon next to Still to start adding a sample.
+Wait for a few seconds and tap <em>Finish</em>.
+Repeat this for 5 times.</p>
+<p>Tap the menu icon at the top right corner, and tap <em>Train</em>.
+A classifier in the virtual sensor is trained with the training samples that
+you provided.</p>
+<a class="reference internal image-reference" href="../_images/train_test.png"><img alt="../_images/train_test.png" src="../_images/train_test.png" style="height: 400px;" /></a>
+<p>Tap the menu icon again and tap <em>Test</em>.
+A prediction should appear at the bottom of your screen.
+(It should say <em>Still</em> because <code class="docutils literal"><span class="pre">dummy_still.py</span></code> is still running.)
+Stop <code class="docutils literal"><span class="pre">dummy_still.py</span></code> with <code class="docutils literal"><span class="pre">Ctrl+C</span></code>.
+Execute <code class="docutils literal"><span class="pre">dummy_shaken.py</span></code> and tap <em>Test</em> again.
+You should see <em>Shaken</em> as a prediction.</p>
+</div>
+</div>
+<div class="section" id="try-it-with-a-sensortag">
+<h2>Try it with a SensorTag<a class="headerlink" href="#try-it-with-a-sensortag" title="Permalink to this headline">¶</a></h2>
+<p>If you have a SensorTag, you can replace the dummy scripts with it.
+Follow the <a class="reference internal" href="connect_sensor_tag.html"><em>instruction</em></a>.
+Then, create another virtual sensor with actually shaking the SensorTag.</p>
+</div>
+</div>
+
+
+      </div>
+      <div class="bottomnav" role="navigation" aria-label="bottom navigation">
+      
+        <p>
+        «&#160;&#160;<a href="../index.html">MLClient for Android Documentation</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="setup.html">Setup</a>&#160;&#160;»
+        </p>
+
+      </div>
+
+    <div class="footer" role="contentinfo">
+        &copy; Copyright 2016, Eiji Hayashi.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.5.
+    </div>
+  </body>
+</html>
