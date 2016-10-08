@@ -13,7 +13,10 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
@@ -34,6 +37,7 @@ public class BuildingDepotHelper {
     private String _baseUrl;
     private String _apiPrefix;
     private String _accessToken;
+    private String _authUrl;
 
     public BuildingDepotHelper (Context context){
 
@@ -43,7 +47,7 @@ public class BuildingDepotHelper {
         String bdServer = prefs.getString("bd_server", "");
         String bdPort = prefs.getString("bd_port", "");
         _apiPrefix = prefs.getString("bd_api_prefix", "");
-
+        _authUrl= bdServer + ":81";
         _baseUrl = bdServer + ":" + bdPort;
     }
 
@@ -61,14 +65,26 @@ public class BuildingDepotHelper {
     }
 
     public void getAccessToken(String id, String key){
-        queryUrl("GET", _baseUrl + "/oauth/access_token/client_id=" + id + "/client_secret=" + key);
+        queryUrl("GET", _authUrl + "/oauth/access_token/client_id=" + id + "/client_secret=" + key);
     }
 
 
-    public void sensorsAt(String location){
-        queryUrl("GET", _baseUrl + _apiPrefix + "/sensor/list?filter=metadata&location="+location);
-    }
+    public void sensorsAt(String location)  {
+        //queryUrl("GET", _baseUrl + _apiPrefix + "/sensor/list?filter=metadata&location="+location);
+        //queryUrlWithJson("POST", _baseUrl + "sensor", sensorEntry.toJson());
+        String newjson = "{\"data\":{\"Tags\":[\"location:"+location+"\"]}}";
+        JSONObject jsonObject = null;
+        try {
+            jsonObject = new JSONObject(newjson);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        String searchurl=_authUrl+"/api/search";
+        Log.d(searchurl, "SearchURL: ");
+        queryUrlWithJson("POST",searchurl, jsonObject);
 
+
+    }
 
 
     public void queryUrl(String method, String url){
@@ -91,7 +107,6 @@ public class BuildingDepotHelper {
         } else {
             httpMethod = Request.Method.GET;
         }
-
         JsonObjectRequest jsonRequest = new JsonObjectRequest(httpMethod, url, jsonObject, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject obj) {

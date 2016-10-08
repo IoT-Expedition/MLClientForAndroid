@@ -59,7 +59,6 @@ public class GIoTTOApplication extends Application implements BuildingDepotHelpe
             }
         }
         catch(Exception e){
-
         }
     }
 
@@ -68,10 +67,13 @@ public class GIoTTOApplication extends Application implements BuildingDepotHelpe
             if(response.has("access_token")) {
                 String accessToken = response.getString("access_token");
                 _buildingDepotHlper.setAccessToken(accessToken);
-                Log.v("BD", accessToken);
                 refreshNearbySensors();
             }else if(response.has("data")){
-                JSONArray array = response.getJSONArray("data");
+                JSONArray array = response.getJSONArray("result");
+                parseSensors(array);
+            }
+            else if (response.has("result")){
+                JSONArray array = response.getJSONArray("result");
                 parseSensors(array);
             }
         }
